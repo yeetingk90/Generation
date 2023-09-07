@@ -1,0 +1,30 @@
+#!/usr/bin/env python3.6
+
+# Largest series product
+
+# Prompt user for inputs
+digits = input("What are the digits you will need to analyse? ")
+length = int(input("What is the length of the adjacent digit(s) you will need to analyse? "))
+
+def largest_prod_calculation(digits, length):
+  if length <= 0:
+    raise ValueError("Length input must be greater than zero.")
+  if length > len(digits):
+    raise ValueError("Length input cannot be greater than digits length")
+   if not digits.isnumeric():
+    raise ValueError("Digits input must only contain digits")
+ 
+largest_product = 0
+ 
+  for i in range(len(digits) - length + 1):
+    product = 1
+  for j in range (i, i + length):
+    product *= int(digits[j])
+      if product > largest_product:
+  largest_product = product
+
+  return largest_product
+
+  result = largest_prod_calculation(digits, length)
+
+print(f"The largest product with the digits and length provided is {result}")
